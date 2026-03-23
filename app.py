@@ -432,8 +432,7 @@ with tab2:
                             'أعلى يوم':int(max_day),'أيام تتجاوز الحد':int(over_days),
                             'مباريات تحتاج تحريك':int(excess)})
         s_df = pd.DataFrame(summary).sort_values('مباريات تحتاج تحريك',ascending=False)
-        st.dataframe(s_df.style.background_gradient(subset=['مباريات تحتاج تحريك'],cmap='Reds'),
-                     use_container_width=True, hide_index=True)
+        st.dataframe(s_df, use_container_width=True, hide_index=True)
     else:
         cdf = df[df['eff_city']==sel_city2]
         cur   = [len(cdf[cdf['ws']==w]) for w in weeks_list]
