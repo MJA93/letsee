@@ -141,7 +141,7 @@ def compute_redistribution(df, max_per_week):
     return moves
 
 def to_excel(df, moves):
-    move_map = {m['orig_idx']: pd.Timestamp(m['to_ws']).strftime('%d/%m') for m in moves}
+    move_map = {m['orig_idx']: m['to_ws'] for m in moves}
     out = df.copy()
     out['أسبوع أصلي']   = out['ws'].apply(lambda x: x.strftime('%d/%m'))
     out['أسبوع مقترح']  = out.index.map(lambda i: move_map.get(i, out.loc[i,'ws'].strftime('%d/%m')))
